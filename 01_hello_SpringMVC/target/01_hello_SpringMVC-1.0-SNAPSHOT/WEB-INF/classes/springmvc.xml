@@ -2,15 +2,43 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 声明组件扫描器-->
     <context:component-scan base-package="com.itheima.controller"/>
     <!-- 声明 springMVC框架中的视图解析器，帮助设置视图文件的路径-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 前缀：视图文件的路径-->
-        <property name="prefix" value="WEB-INF/view/"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
         <!-- 后缀：视图文件的扩展名-->
         <property name="suffix" value=".jsp"/>
     </bean>
+
+
+<!--   返回Object时添加注解驱动，增加HttpMessageConverter接口的实现类，可以将java对象转换为json，xml等-->
+<!--    <mvc:annotation-driven/>-->
+<!--    当DispatcherServlet的url-pattern设置为 / 时，覆盖了tomcat服务器的default，
+        而DispatcherServlet默认情况下没有处理静态资源的控制器对象。
+        第一种解决方式：需要加入default-servlet-handler标签，用来处理静态资源。
+    原理：加入该标签后，框架会自动创建控制器对象DefaultServletHttpRequestHandler
+    (类似于自定义的MyController)。这个对象可以把接受的请求转发给tomcat的default。
+
+        并且 default-servlet-handler 和 @RequestMapping注解有冲突，会将所有请求都转发给default，
+        此时动态资源也会被转发给default，而无法被处理。因此需要加入annotation-driven标签来解决冲突
+-->
+<!--    <mvc:default-servlet-handler/>-->
+
+
+<!--    第二种处理静态资源的方式：加入<mvc:resources>
+            加入后框架会自动创建 ResourceHttpRequestHandler这个处理器对象。
+            让这个对象处理静态资源的访问，不依赖tomcat服务器。
+            mapping：访问静态资源的uri地址，使用通配符 **
+            location：静态资源在项目中的目录位置
+-->
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/html/**" location="/html/"/>
+<!--   <mvc:resources>标签会和@RequestMapping冲突，为了解决冲突，需要添加注解驱动  -->
+    <mvc:annotation-driven/>
+
 </beans>

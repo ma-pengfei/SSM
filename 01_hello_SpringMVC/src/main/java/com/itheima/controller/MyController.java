@@ -10,6 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * 能处理请求的都是控制器(处理器)：MyController能处理请求，叫做后端控制器
  */
+
+/**
+ * 当RequestMapping注解放在类上时，表示一个模块，是方法上RequestMapping中value的公共路径
+ */
+@RequestMapping(value = "{test,User}")
 @Controller
 public class MyController {
 
@@ -29,7 +34,7 @@ public class MyController {
      *      model：数据，请求处理完成后，要显示给用户的数据。
      *      view：视图，例如jsp等
      */
-    @RequestMapping(value = "/some.do")
+    @RequestMapping(value = "some.do")
     public ModelAndView doSome(){
         //处理some.do的请求
         //假设已经调用service处理完成了
@@ -52,7 +57,7 @@ public class MyController {
         return mv;
     }
 
-    @RequestMapping(value = {"/other.do","first.do"})
+    @RequestMapping(value = {"other.do","first.do"})
     public ModelAndView doOther(){
         ModelAndView mv = new ModelAndView();
         mv.addObject("msg","欢迎使用SpringMVC进行web开发");
