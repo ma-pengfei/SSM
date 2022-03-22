@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- settings : 控制 mybatis 全局行为-->
+    <settings>
+        <!-- 设置 mybatis 输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+        <!--给类型起别名，返回值类型可以省略这部分目录-->
+        <package name="com/itheima/dao"/>
+    </typeAliases>
+
+    <!-- sql mapper(sql映射文件的位置)-->
+    <mappers>
+        <!--
+            name：包名。这个包中的所有mapper.xml可以一次性全部加载
+            要求：mapper文件名称必须和dao接口名称一致
+                mapper文件必须和dao接口在同一目录下
+        -->
+        <package name="com/itheima/dao"/>
+
+<!--  也可以使用mapper,属性为resource -->
+    </mappers>
+</configuration>
