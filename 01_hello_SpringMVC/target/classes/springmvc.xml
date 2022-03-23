@@ -41,4 +41,7 @@
 <!--   <mvc:resources>标签会和@RequestMapping冲突，为了解决冲突，需要添加注解驱动  -->
     <mvc:annotation-driven/>
 
+    <!-- 声明组件扫描器-->
+    <context:component-scan base-package="com.itheima.handler"/>
+
 </beans>

@@ -39,6 +39,12 @@
         <input type="submit" value="发起fourth.do请求"/>
     </form>
 
+    <form action="exception.do" method="post">
+        name <input type="text" name="name"/><br>
+        age <input type="text" name="age"/><br>
+        <input type="submit" value="发起exception.do请求"/>
+    </form>
+
     <img src="images/p1.jpg" alt="静态资源，不能访问">
 </body>
 </html>

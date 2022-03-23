@@ -4,9 +4,9 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>show.jsp</h1>
-    <h3>msg数据:${name}</h3>
-    <h3>fun数据:${age}</h3>
+    <h1>AgeException.jsp</h1><br>
+    <h3>提示信息:${msg}</h3><br>
+    <h3>异常信息：${exception.message}
 
 </body>
 </html>
