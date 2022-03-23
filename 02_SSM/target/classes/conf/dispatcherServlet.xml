@@ -14,7 +14,6 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
 <!--注解驱动
         作用：1.响应ajax请求，返回json
              2. 解决静态资源的访问问题
