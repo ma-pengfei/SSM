@@ -12,5 +12,7 @@
     <h3>password数据:${password}</h3>
     <h3>age数据:${age}</h3>
 
+    <h3>新增数据:${addMsg}</h3>
+
 </body>
 </html>

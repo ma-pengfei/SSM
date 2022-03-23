@@ -44,4 +44,25 @@
     <!-- 声明组件扫描器，扫描异常相关注解所在的包名-->
     <context:component-scan base-package="com.itheima.handler"/>
 
+    <!-- 声明拦截器：拦截器可以存在多个-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 指定需要拦截的请求的uri地址
+                path是uri地址，可以使用通配符 **
+                表示目录下任意的字符，文件或，和任何子目录下的文件
+                /** 表示拦截所有请求
+            -->
+            <mvc:mapping path="/user/**"/>
+            <!-- 声明拦截器对象-->
+            <bean class="com.itheima.handler.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.itheima.handler.MyInterceptor2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

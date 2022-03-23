@@ -5,7 +5,9 @@
 </head>
 <body>
     <p>第一个springmvc项目</p>
+
     <p><a href="test/first.do">发起some.do请求</a></p>
+
     <form action="test/second.do" method="post">
         <input type="text" name="username"/>
         <input type="submit" value="发起second.do请求"/>
@@ -36,10 +38,10 @@
         username <input type="text" name="username"/><br>
         password <input type="text" name="password"/><br>
         age <input type="text" name="age"/><br>
-        <input type="submit" value="发起fourth.do请求"/>
+        <input type="submit" value="发起returnString-view.do请求"/>
     </form>
 
-    <form action="exception.do" method="post">
+    <form action="user/exception.do" method="post">
         name <input type="text" name="name"/><br>
         age <input type="text" name="age"/><br>
         <input type="submit" value="发起exception.do请求"/>
