@@ -3,11 +3,14 @@ package com.itheima.controller;
 import com.itheima.vo.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 @Controller
@@ -60,6 +63,17 @@ public class MyController3 {
             @CookieValue(value = "JSESSIONID",required = false)String jsessionId) {
 
         System.out.println("jsessionId = " + jsessionId);
+    }
+
+    @RequestMapping(value = "/quick4")
+    @ResponseBody
+    public void doQuick4(String username, MultipartFile multipartFile) throws IOException {
+        //multipartFile 框架将上传的文件转换为该对象,上传文件标签的name属性值必须和该参数名一致
+        System.out.println(username);
+        //获取上传的文件名
+        String originalFilename = multipartFile.getOriginalFilename();
+        //存储
+        multipartFile.transferTo(new File("D:\\upload\\" + originalFilename));
     }
 
 }
