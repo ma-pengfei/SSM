@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 @Controller
 public class MyController3 {
@@ -31,6 +32,12 @@ public class MyController3 {
     @ResponseBody
     public String doStringData(String name,Integer age) {
         return "Hello " + name + "，你的年龄是：" + age;
+    }
+
+    @RequestMapping(value = "/quick")
+    @ResponseBody
+    public void doQuick(Date date) {
+        System.out.println(date);
     }
 
 
