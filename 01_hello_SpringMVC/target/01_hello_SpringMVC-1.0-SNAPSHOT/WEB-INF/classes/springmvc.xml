@@ -39,7 +39,7 @@
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/html/**" location="/html/"/>
 <!--   <mvc:resources>标签会和@RequestMapping冲突，为了解决冲突，需要添加注解驱动  -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!-- 声明组件扫描器，扫描异常相关注解所在的包名-->
     <context:component-scan base-package="com.itheima.handler"/>
@@ -65,4 +65,11 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.itheima.converter.DateConverter"/>
+            </list>
+        </property>
+    </bean>
 </beans>

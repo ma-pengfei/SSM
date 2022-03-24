@@ -2,10 +2,7 @@ package com.itheima.controller;
 
 import com.itheima.vo.Student;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +37,29 @@ public class MyController3 {
         System.out.println(date);
     }
 
+    @RequestMapping(value = "/quick1")
+    @ResponseBody
+    public void doQuick1(HttpServletRequest request, HttpServletResponse response,
+                         HttpSession session) {
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+    }
 
+    @RequestMapping(value = "/quick2")
+    @ResponseBody
+    public void doQuick2(
+            @RequestHeader(value = "User-Agent",required = false)String headerValue) {
+
+        System.out.println("headerValue = " + headerValue);
+    }
+
+    @RequestMapping(value = "/quick3")
+    @ResponseBody
+    public void doQuick3(
+            @CookieValue(value = "JSESSIONID",required = false)String jsessionId) {
+
+        System.out.println("jsessionId = " + jsessionId);
+    }
 
 }
